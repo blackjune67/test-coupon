@@ -23,6 +23,8 @@ class AlreadyIssuedException(message: String = "이미 발급받은 쿠폰입니
 class IssuanceNotFoundException(message: String = "쿠폰 발급 내역을 찾을 수 없습니다.")
     : DomainException("ISSUANCE_NOT_FOUND", HttpStatus.NOT_FOUND, message)
 
-class AlreadyUsedException(message: String = "이미 사용한 쿠폰입니다.") : RuntimeException()
+class AlreadyUsedException(message: String = "이미 사용한 쿠폰입니다.")
+    : DomainException("ALREADY_USED", HttpStatus.CONFLICT, message)
 
-class ExpiredException(message: String = "유효기간이 만료된 쿠폰입니다.") : RuntimeException()
+class ExpiredException(message: String = "유효기간이 만료된 쿠폰입니다.")
+    : DomainException("EXPIRED", HttpStatus.CONFLICT, message)
